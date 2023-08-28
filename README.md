@@ -26,7 +26,7 @@
 - jwt
 
 ## アプリケーション構成図
-[インフラ構成図.png](https://github.com/ryosuke-horie/server-monitoring-proto/blob/main/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90%E5%9B%B3.png)
+![インフラ構成図.png](https://github.com/ryosuke-horie/server-monitoring-proto/blob/main/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90%E5%9B%B3.png)
 
 ## 機能一覧
 - ユーザーログイン機能・ユーザー登録機能(jwt passport passport-jwt bcrypt)
