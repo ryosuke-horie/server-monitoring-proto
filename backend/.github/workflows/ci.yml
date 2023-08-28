@@ -1,0 +1,32 @@
+name: Nest.js CI
+
+# このワークフローはプルリクエストでのpushごとに実行されます
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    # ジョブの処理内容
+    steps:
+    # GitHub Actionsが提供するsetup-nodeアクションを使ってNode.jsをセットアップ
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    # リポジトリをチェックアウト
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # 依存関係のインストール
+    - name: Install dependencies
+      run: npm install
+
+    # Jestを使って単体テストを実行
+    - name: Run Jest tests
+      run: npm run test

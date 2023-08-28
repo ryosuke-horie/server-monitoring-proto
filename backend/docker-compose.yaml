@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  postgres:
+    # Docker Image は postgres:12-alpine を使います。postgres:12-alpine は postgres:12 と比較して、イメージサイズが小さくなっています。
+    image: postgres:12-alpine
+    # コンテナの名前を指定します。
+    container_name: postgres
+    # 環境変数を設定します。
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    # データの永続化
+    volumes:
+      # postgresディレクトリを/var/lib/postgresql/dataにマウントする
+      - postgres:/var/lib/postgresql/data
+    # ポートの指定（HOST:CONTAINER）
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 81:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: nestjs@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - ./docker/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    user: root
+
+volumes:
+  postgres:
